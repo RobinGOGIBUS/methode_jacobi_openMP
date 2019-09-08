@@ -10,6 +10,7 @@ int main()
 {
 	SetConsoleOutputCP(CP_UTF8);
 	std::unique_ptr<Program> p(new Program);
+	p->Run();
 	return 0;
 }
 

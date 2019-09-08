@@ -1,7 +1,5 @@
-﻿  IHM.cpp
-  Jacobi.cpp
+﻿  VueJacobi.cpp
   methode_jacobi.cpp
   program.cpp
-  VueJacobi.cpp
   Génération de code en cours...
   methode_jacobi.vcxproj -> D:\projets\methode_jacobi\x64\Debug\methode_jacobi.exe

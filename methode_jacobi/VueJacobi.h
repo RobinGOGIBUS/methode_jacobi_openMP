@@ -11,9 +11,12 @@ public:
 	~VueJacobi();
 
 	void afficheMenu();
-	void afficheSaisies();
+	void afficheSaisieOrdre();
+	void afficheSaisiePrecision();
+	void afficheSaisieNbIte();
+	void afficheSaisieValues(int& i, int& j);
 	void afficheResultats();
-	void afficheErreurs(std::string message);
+	void afficheErreurs(const char*);
 
 
 };

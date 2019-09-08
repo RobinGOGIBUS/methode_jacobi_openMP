@@ -1,16 +1,24 @@
 #pragma once
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/io.hpp>
-using namespace boost::numeric::ublas;
 
 class Jacobi
 {
 public :
-	Jacobi(matrix<int> matrice);
+	Jacobi(boost::numeric::ublas::matrix<int> matrice, int er, int im, int n, boost::numeric::ublas::matrix<int> u);
 	~Jacobi();
+	void Calcul();
+	void Init();
 
 private : 
-	matrix<int> matrice;
+	boost::numeric::ublas::matrix<int> a;
+	boost::numeric::ublas::matrix<int> u;
+	int er;
+	int im;
+	int n;
+	int nd;
+	int st;
+	int na; // norme de a(i,j)
 
 };
 
