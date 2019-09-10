@@ -71,4 +71,14 @@ void VueJacobi::afficheErreurs(const char* message)
 	ShowWindow(myConsole, 0);
 }
 
+void VueJacobi::afficheChoix()
+{
+	std::cout << "Entrez 1 si vous voulez saisir les valeurs de la matrice.\nTapez autre chose pour mettre des valeurs aléatoires :" << std::endl;
+}
+
+void VueJacobi::afficheSaisieMaxAlea()
+{
+	std::cout << "Entrez la borne max pour les nombres aléatoires (> 0) : " << std::endl;
+}
+
 

@@ -1,5 +1,4 @@
 #include <iostream>
-#include <omp.h>
 #include <stdio.h>
 #include <Windows.h>
 #include "program.h"

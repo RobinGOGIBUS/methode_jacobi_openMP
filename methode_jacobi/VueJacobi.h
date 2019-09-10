@@ -20,6 +20,8 @@ public:
 	void afficheResultats(boost::numeric::ublas::matrix<double> a, boost::numeric::ublas::matrix<double> u, int& it, double& pr);
 	void afficheTime(double& time);
 	void afficheErreurs(const char*);
+	void afficheChoix();
+	void afficheSaisieMaxAlea();
 
 
 };

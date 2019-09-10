@@ -44,11 +44,12 @@ void Jacobi::Calcul()
 
 void Jacobi::Init()
 {
-	for (int i = 0; i < n;i++) 
+#pragma omp parallel for
+	for (int i = 0; i < n; i++)
 	{
 		u(i, i) = 1.0;
 		nd = nd + (a(i, i) * a(i, i));
-		if (i != n-1) 
+		if (i != n - 1)
 		{
 			for (int j = i + 1; j < n; j++)
 			{
@@ -56,17 +57,19 @@ void Jacobi::Init()
 				u(i, j) = 0.0;
 				u(j, i) = 0.0;
 			}
-		}	
-		
-	}
+		}
+
+	}		
+	
 }
 
 void Jacobi::rechercheEltHorsDiag()
 {
 	st = 0;
+#pragma omp parallel for
 	for (int i = 0; i < n - 1; i++)
 	{
-		for (int j = i+1; j < n; j++)
+		for (int j = i + 1; j < n; j++)
 		{
 			te = abs(a(i, j));
 			if (te > st)

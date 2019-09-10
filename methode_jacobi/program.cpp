@@ -52,26 +52,55 @@ boost::numeric::ublas::matrix<double> Program::Saisies()
 
 	}
 
+	std::string choix = "";
+	vuejacobi->afficheChoix();
 	boost::numeric::ublas::matrix<double> a(n, n);
-
-	// valeurs de la matrice
-	std::string value = "";
-	for (int i = 0; i < n; i++)
+	std::cin >> choix;
+	if (std::stod(choix) == 1) 
 	{
-		for (int j = 0; j <= i; j++)
+		// valeurs de la matrice
+		std::string value = "";
+		for (int i = 0; i < n; i++)
 		{
-			vuejacobi->afficheSaisieValues(i, j);
-			std::cin >> value;
-			if (std::regex_match(value, pattern2))
+			for (int j = 0; j <= i; j++)
 			{
-				a(j, i) = std::stod(value);
+				vuejacobi->afficheSaisieValues(i, j);
+				std::cin >> value;
+				if (std::regex_match(value, pattern2))
+				{
+					a(j, i) = std::stod(value);
+				}
+				else {
+					a(j, i) = 0.0;
+				}
+
 			}
-			else {
-				a(j, i) = 0.0;
-			}
-		
 		}
 	}
+	else 
+	{
+		int max_rand = 0;
+		while (max_rand == 0) 
+		{
+			std::string max = "0";
+			vuejacobi->afficheSaisieMaxAlea();
+			std::cin >> max;
+			if (std::regex_match(max, pattern)) 
+			{
+				max_rand = std::stoi(max) > 0 ? std::stoi(max) : 0;
+			}
+		}
+		// valeurs de la matrice
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j <= i; j++)
+			{
+				a(j, i) = std::rand() % max_rand;
+			}
+		}
+		
+	}
+	
 
 	// précision désirée
 	std::string precision = "";
