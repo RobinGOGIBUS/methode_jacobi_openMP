@@ -59,7 +59,8 @@ void VueJacobi::afficheResultats(boost::numeric::ublas::matrix<double> a, boost:
 void VueJacobi::afficheTime(double& time)
 {
 	std::cout << std::endl;
-	std::cout << "Temps d'éxecution : " << time << " s." << std::endl;
+	std::cout << "Temps d'exécution : " << time << " s." << std::endl;
+	system("pause");
 }
 
 void VueJacobi::afficheErreurs(const char* message)

@@ -1,1 +1,12 @@
-﻿
+﻿  IHM.cpp
+  Jacobi.cpp
+  methode_jacobi.cpp
+  program.cpp
+  stdafx.cpp
+  templates.cpp
+  VueJacobi.cpp
+D:\projets\methode_jacobi\methode_jacobi\program.cpp(38,24): warning C4129:  '.' : caractère de séquence d'échappement non reconnu
+D:\projets\methode_jacobi\methode_jacobi\VueJacobi.cpp(48,20): warning C4018:  '<' : incompatibilité signed/unsigned
+  Génération de code en cours...
+D:\projets\methode_jacobi\methode_jacobi\VueJacobi.cpp(52,21): warning C4018:  '<' : incompatibilité signed/unsigned
+  methode_jacobi.vcxproj -> D:\projets\methode_jacobi\Debug\methode_jacobi.exe

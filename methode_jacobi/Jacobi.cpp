@@ -1,6 +1,5 @@
 #include "Jacobi.h"
 
-
 Jacobi::Jacobi(boost::numeric::ublas::matrix<double> matrice, double er, int im, int n, boost::numeric::ublas::matrix<double> u) : a(matrice), er(er), im(im), n(n), u(u), nd(0), st(0), na(0), te(0), ni(0), nj(0), b(0), c(0), q(0), s(0), p(0), it(0), pr(0)
 {
 
@@ -31,7 +30,7 @@ void Jacobi::Calcul()
 		transformationA();
 
 		// actualisation de nd
-		nd = nd + 2 * pow(a(ni, nj), 2);
+		nd = nd + 2 * (a(ni, nj) * a(ni, nj));
 
 		st = a(ni, ni);
 		a(ni, ni) = c * c * st + 2 * s * c * a(ni, nj) + s * s * a(nj, nj);
@@ -48,12 +47,12 @@ void Jacobi::Init()
 	for (int i = 0; i < n;i++) 
 	{
 		u(i, i) = 1.0;
-		nd = nd + pow(a(i, i), 2);
+		nd = nd + (a(i, i) * a(i, i));
 		if (i != n-1) 
 		{
 			for (int j = i + 1; j < n; j++)
 			{
-				st = st + pow(a(i, j), 2);
+				st = st + (a(i, j) * a(i, j));
 				u(i, j) = 0.0;
 				u(j, i) = 0.0;
 			}
@@ -92,7 +91,7 @@ void Jacobi::calculParamsRotation()
 		q = abs(b);
 		p = 2 * a(ni, nj) * sgn(b);
 		st = sqrt(p * p + q * q);
-		c = sqrt((1 + q / st) / 2);
+		c = sqrt((1 + q / st) * 0.5);
 		s = p / (2 * st * c);
 	}
 }

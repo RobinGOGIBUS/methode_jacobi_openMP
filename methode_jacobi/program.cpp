@@ -1,5 +1,4 @@
 #include "program.h"
-#include "omp.h"
 
 Program::Program() : vuejacobi(new VueJacobi), n(0), er(0), im(0)
 {

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <memory>
 #include <regex>
+#include <omp.h>
 
 class Program
 {
