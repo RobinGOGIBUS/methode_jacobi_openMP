@@ -13,11 +13,11 @@ public:
 	Program();
 	~Program();
 	void Run();
-	boost::numeric::ublas::matrix<int> Saisies();
+	boost::numeric::ublas::matrix<double> Saisies();
 private:
 	std::unique_ptr<VueJacobi> vuejacobi;
 	int n;
-	int er;
+	double er;
 	int im;
 
 

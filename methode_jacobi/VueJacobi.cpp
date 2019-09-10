@@ -42,9 +42,24 @@ void VueJacobi::afficheSaisieValues(int& i, int& j)
 	std::cout << "Le " << j + 1 << " terme de la colonne " << i + 1 << " est : " << std::endl;
 }
 
-void VueJacobi::afficheResultats()
+void VueJacobi::afficheResultats(boost::numeric::ublas::matrix<double> a, boost::numeric::ublas::matrix<double> u, int& it, double& pr)
 {
+	std::cout << std::endl;
+	for (int i = 0; i < a.size1(); i++) 
+	{
+		std::cout << "Valeur propre : " << i + 1 << " = " << a(i, i) << std::endl;
+		std::cout << "Vecteur propre correspondant : ";
+		for (int j = 0; j < a.size1();j++) 
+		{
+			std::cout << u(j, i) << std::endl;
+		}
+	}
+}
 
+void VueJacobi::afficheTime(double& time)
+{
+	std::cout << std::endl;
+	std::cout << "Temps d'éxecution : " << time << " s." << std::endl;
 }
 
 void VueJacobi::afficheErreurs(const char* message)

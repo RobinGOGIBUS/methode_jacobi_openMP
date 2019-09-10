@@ -157,6 +157,7 @@
     <ClCompile Include="Jacobi.cpp" />
     <ClCompile Include="methode_jacobi.cpp" />
     <ClCompile Include="program.cpp" />
+    <ClCompile Include="templates.cpp" />
     <ClCompile Include="VueJacobi.cpp" />
   </ItemGroup>
   <ItemGroup>

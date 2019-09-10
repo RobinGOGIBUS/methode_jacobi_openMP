@@ -1,4 +1,5 @@
 #include "program.h"
+#include "omp.h"
 
 Program::Program() : vuejacobi(new VueJacobi), n(0), er(0), im(0)
 {
@@ -12,9 +13,15 @@ Program::~Program()
 void Program::Run()
 {
 	try {
-		boost::numeric::ublas::matrix<int> a = Saisies();
-		boost::numeric::ublas::matrix<int> u(n,n);
+		boost::numeric::ublas::matrix<double> a = Saisies();
+		double start = omp_get_wtime();
+		boost::numeric::ublas::matrix<double> u(n,n);
 		std::unique_ptr<Jacobi> jacobi(new Jacobi( a, er, im, n, u));
+		jacobi->Calcul();
+		vuejacobi->afficheResultats(jacobi->getA(), jacobi->getU(), jacobi->getIt(), jacobi->getPr());
+		double end = omp_get_wtime();
+		double time = end - start;
+		vuejacobi->afficheTime(time);
 	}
 	catch (std::exception e) {
 		vuejacobi->afficheErreurs(e.what());
@@ -22,14 +29,16 @@ void Program::Run()
 	
 }
 
-boost::numeric::ublas::matrix<int> Program::Saisies()
+boost::numeric::ublas::matrix<double> Program::Saisies()
 {
 	bool ok = false;
 	std::string ordre = "";
 
 	// ordre de la matrice
 	std::string regexp = "^(0|[1-9][0-9]*)$";
+	std::string regexp2 = "(^([+-]?(?:[[:d:]]+\.?|[[:d:]]*\.[[:d:]]+))(?:[Ee][+-]?[[:d:]]+)?$)";
 	std::regex pattern(regexp);
+	std::regex pattern2(regexp2);
 	while (n == 0)
 	{
 		vuejacobi->afficheSaisieOrdre();
@@ -44,22 +53,22 @@ boost::numeric::ublas::matrix<int> Program::Saisies()
 
 	}
 
-	boost::numeric::ublas::matrix<int> a(n, n);
+	boost::numeric::ublas::matrix<double> a(n, n);
 
 	// valeurs de la matrice
 	std::string value = "";
 	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < n; j++)
+		for (int j = 0; j <= i; j++)
 		{
 			vuejacobi->afficheSaisieValues(i, j);
 			std::cin >> value;
-			if (std::regex_match(value, pattern))
+			if (std::regex_match(value, pattern2))
 			{
-				a(j, i) = std::stoi(value);
+				a(j, i) = std::stod(value);
 			}
 			else {
-				a(j, i) = 0;
+				a(j, i) = 0.0;
 			}
 		
 		}
@@ -71,11 +80,11 @@ boost::numeric::ublas::matrix<int> Program::Saisies()
 	{
 		vuejacobi->afficheSaisiePrecision();
 		std::cin >> precision;
-		if (std::regex_match(precision, pattern))
+		if (std::regex_match(precision, pattern2))
 		{
-			if (std::stoi(precision) > 1)
+			if (std::stod(precision) > 0.0)
 			{
-				er = std::stoi(precision);
+				er = std::stod(precision);
 			}
 		}
 	}

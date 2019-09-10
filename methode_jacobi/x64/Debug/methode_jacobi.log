@@ -1,5 +1,7 @@
-﻿  VueJacobi.cpp
+﻿  Jacobi.cpp
+  VueJacobi.cpp
   methode_jacobi.cpp
   program.cpp
   Génération de code en cours...
+D:\projets\methode_jacobi\methode_jacobi\program.cpp(39,24): warning C4129:  '.' : caractère de séquence d'échappement non reconnu
   methode_jacobi.vcxproj -> D:\projets\methode_jacobi\x64\Debug\methode_jacobi.exe
